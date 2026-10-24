@@ -4,19 +4,29 @@ Unity编辑器本地资源浏览工具。本仓库仅提供发行文件和下载
 
 ## 下载
 
-[下载最新版本及查看更新说明](https://github.com/chenjialuo666/art-asset-browser/releases/latest)
+### [点击下载 Windows 安装包（V0.7.6，58.7 MB）](https://github.com/chenjialuo666/art-asset-browser/releases/download/v0.7.6/ArtAssetBrowser-0.7.6-installer.zip)
 
-首次安装请选择名称以 `-installer.zip` 结尾的安装包。
+**首次使用：下载上面这一个 ZIP 即可。** 解压后运行 `ArtAssetBrowserInstaller.exe`，选择你的Unity项目进行安装。
+
+**已经安装：打开美术资源管理器，点击“检查更新 → 下载并更新”。无需重新下载安装包。**
+
+更新包、维护组件包、`update.json` 和GitHub自动生成的“Source code（源码）”压缩包，都不是普通用户需要下载安装的文件。
 
 ## 安装和使用
 
-1. 解压安装包，运行 `ArtAssetBrowserInstaller.exe`，选择需要使用工具的Unity项目。
-2. 默认安装位置为项目内 `Assets/Editor/com.artasset.browser`。
-3. 在Unity菜单中打开 `Art Tools / 美术资源管理器`。
-4. 已安装用户在管理器内点击“检查更新”，按提示下载、确认更新或卸载，无需每次重新安装。
+1. 下载上方安装包并解压，运行 `ArtAssetBrowserInstaller.exe`。
+2. 在安装管理器中选择需要使用工具的Unity项目。
+3. 默认安装位置为项目内 `Assets/Editor/com.artasset.browser`。
+4. 在Unity菜单中打开 `Art Tools / 美术资源管理器`。
+5. 后续更新和卸载均可在管理器内操作。
 
-如更新提示等待Unity关闭，请先保存工作并正常关闭Unity，完成后重新打开项目。
-更新包、维护组件包及 `update.json` 供工具读取，不需要手动覆盖。
+如更新提示等待Unity关闭，请先保存工作并正常关闭Unity，完成后重新打开项目。不要手动覆盖更新文件。
+
+## 更新说明与历史版本
+
+[查看更新记录和历史版本](https://github.com/chenjialuo666/art-asset-browser/releases)
+
+此入口用于查看版本变化；普通用户下载请使用页面顶部的安装包链接。
 
 ## 验证范围
 
