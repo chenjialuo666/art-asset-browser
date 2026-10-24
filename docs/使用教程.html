@@ -1,0 +1,1428 @@
+<!doctype html>
+<!-- AWB-USER-GUIDE: generated from docs/user-guide.json -->
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>美术资源管理器使用教程</title><style>
+    :root {
+      color-scheme: dark;
+      --bg: #1e1e1e;
+      --surface: #2b2b2b;
+      --surface-2: #353535;
+      --surface-3: #414141;
+      --line: #4b4b4b;
+      --line-soft: #383838;
+      --text: #e4e4e4;
+      --muted: #a8a8a8;
+      --blue: #4f8fd8;
+      --blue-strong: #2f71ba;
+      --teal: #42a89d;
+      --green: #76ad67;
+      --orange: #d58a43;
+      --gold: #e3b341;
+      --red: #cb6464;
+      --code: #181818;
+      --radius: 6px;
+      --content: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+
+    button,
+    code {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(30, 30, 30, 0.96);
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar-inner {
+      width: min(calc(100% - 32px), var(--content));
+      min-height: 48px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex: 0 0 auto;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .brand-mark {
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #6ba5e5;
+      border-radius: 4px;
+      background: #254b72;
+      color: #dcecff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      align-items: stretch;
+      min-width: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav a {
+      min-height: 48px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid transparent;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--text);
+      border-bottom-color: var(--blue);
+      outline: none;
+    }
+
+    .top-actions {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+    }
+
+    .mini-action {
+      min-height: 30px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--surface-2);
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .mini-action:hover {
+      background: var(--surface-3);
+    }
+
+    .page {
+      width: min(calc(100% - 32px), var(--content));
+      margin: 0 auto;
+    }
+
+    .intro {
+      padding: 44px 0 32px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .intro-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #87b8ee;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 34px;
+      line-height: 1.24;
+      font-weight: 680;
+    }
+
+    h2 {
+      margin-bottom: 8px;
+      font-size: 23px;
+      line-height: 1.35;
+      font-weight: 650;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 650;
+    }
+
+    .lead {
+      max-width: 690px;
+      margin-bottom: 18px;
+      color: #bdbdbd;
+      font-size: 16px;
+    }
+
+    .meta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .meta {
+      padding: 4px 9px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #282828;
+      color: #c9c9c9;
+      font-size: 12px;
+    }
+
+    .read-only {
+      flex: 0 0 220px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--green);
+      background: #263226;
+      color: #cce2c8;
+      font-size: 13px;
+    }
+
+    .read-only strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #e3f2df;
+    }
+
+    section {
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line-soft);
+      scroll-margin-top: 58px;
+    }
+
+    .section-head {
+      margin-bottom: 22px;
+    }
+
+    .section-head p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .install-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.78fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: install-step;
+    }
+
+    .step-list li {
+      position: relative;
+      min-height: 46px;
+      padding: 2px 0 18px 48px;
+      counter-increment: install-step;
+    }
+
+    .step-list li::before {
+      content: counter(install-step);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #5d95d2;
+      border-radius: 50%;
+      background: #294a6c;
+      color: #e5f1ff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .step-list li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 31px;
+      left: 15px;
+      width: 1px;
+      height: calc(100% - 28px);
+      background: var(--line);
+    }
+
+    .step-list strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .step-list span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .code-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .code-block {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--code);
+    }
+
+    .code-label {
+      padding: 7px 10px;
+      border-bottom: 1px solid #343434;
+      background: #292929;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .code-row {
+      min-height: 48px;
+      padding: 10px 10px 10px 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .code-row code {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: #d8e9fb;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 13px;
+    }
+
+    .copy-button {
+      flex: 0 0 auto;
+      margin-left: auto;
+      min-height: 28px;
+      padding: 0 10px;
+      border: 1px solid #526f8d;
+      border-radius: 4px;
+      background: #2a4c6e;
+      color: #ecf5ff;
+      font-size: 12px;
+    }
+
+    .copy-button:hover {
+      background: #35618a;
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 11px 13px;
+      border-left: 3px solid var(--gold);
+      background: #383224;
+      color: #e5d6aa;
+      font-size: 13px;
+    }
+
+    .unity-window {
+      overflow: hidden;
+      border: 1px solid #555;
+      border-radius: var(--radius);
+      background: #2f2f2f;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+    }
+
+    .unity-titlebar {
+      min-height: 31px;
+      padding: 0 11px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #171717;
+      background: #242424;
+      color: #d2d2d2;
+      font-size: 12px;
+    }
+
+    .window-controls {
+      margin-left: auto;
+      display: flex;
+      gap: 7px;
+    }
+
+    .window-controls span {
+      width: 9px;
+      height: 9px;
+      border: 1px solid #6b6b6b;
+      border-radius: 50%;
+    }
+
+    .unity-toolbar {
+      min-height: 60px;
+      padding: 7px 9px;
+      display: grid;
+      gap: 6px;
+      border-bottom: 1px solid #1c1c1c;
+      background: #333;
+    }
+
+    .toolbar-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .field {
+      min-width: 0;
+      height: 23px;
+      padding: 2px 7px;
+      display: flex;
+      align-items: center;
+      border: 1px solid #191919;
+      border-radius: 3px;
+      background: #222;
+      color: #c7c7c7;
+      font-size: 11px;
+    }
+
+    .field.grow {
+      flex: 1;
+    }
+
+    .unity-button {
+      height: 23px;
+      padding: 0 10px;
+      border: 1px solid #202020;
+      border-radius: 3px;
+      background: #4a4a4a;
+      color: #d6d6d6;
+      font-size: 11px;
+    }
+
+    .unity-button.active {
+      border-color: #356d9e;
+      background: #376c9b;
+      color: #fff;
+    }
+
+    .unity-main {
+      min-height: 360px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) 5px minmax(260px, 0.82fr);
+    }
+
+    .asset-pane {
+      padding: 10px;
+      background: #303030;
+    }
+
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(78px, 1fr));
+      gap: 8px;
+    }
+
+    .asset-card {
+      position: relative;
+      min-width: 0;
+      padding: 7px 7px 6px;
+      border: 1px solid #1d1d1d;
+      border-radius: 4px;
+      background: #3c3c3c;
+    }
+
+    .asset-card.selected {
+      border-color: #4d84bd;
+      background: #40556c;
+    }
+
+    .asset-card .thumb {
+      aspect-ratio: 1;
+      margin-bottom: 5px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #494949;
+    }
+
+    .asset-card .name {
+      overflow: hidden;
+      color: #d4d4d4;
+      font-size: 10px;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .asset-card .type {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 1px 5px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .asset-card .star {
+      position: absolute;
+      top: 7px;
+      right: 9px;
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    .type-prefab {
+      background: #477fb5;
+    }
+
+    .type-model {
+      background: #4d957a;
+    }
+
+    .type-texture {
+      background: #a85b8a;
+    }
+
+    .type-material {
+      background: #c27539;
+    }
+
+    .type-scene {
+      background: #567c9a;
+    }
+
+    .shape {
+      width: 52%;
+      height: 52%;
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      background: #6f9fd1;
+    }
+
+    .shape.cube {
+      transform: rotate(30deg);
+      border-radius: 5px;
+    }
+
+    .shape.model {
+      width: 42%;
+      height: 62%;
+      clip-path: polygon(50% 0, 100% 30%, 82% 100%, 18% 100%, 0 30%);
+      background: #67b997;
+    }
+
+    .shape.texture {
+      border: 0;
+      background:
+        linear-gradient(90deg, #d96b9f 50%, transparent 50%) 0 0 / 16px 16px,
+        linear-gradient(#79a8d5 50%, #e0c55a 50%) 0 0 / 16px 16px;
+    }
+
+    .shape.material {
+      border-radius: 50%;
+      background: #d48a49;
+      box-shadow: inset -12px -12px 0 rgba(0, 0, 0, 0.18);
+    }
+
+    .shape.scene {
+      width: 66%;
+      height: 45%;
+      border: 0;
+      clip-path: polygon(0 100%, 0 66%, 24% 41%, 40% 68%, 67% 18%, 100% 100%);
+      background: #71a3c8;
+    }
+
+    .splitter {
+      background: #202020;
+      cursor: col-resize;
+    }
+
+    .detail-pane {
+      padding: 9px;
+      background: #383838;
+    }
+
+    .detail-tabs {
+      height: 25px;
+      display: flex;
+      border-bottom: 1px solid #222;
+    }
+
+    .detail-tabs span {
+      padding: 3px 14px;
+      border-right: 1px solid #222;
+      color: #c5c5c5;
+      font-size: 11px;
+    }
+
+    .detail-tabs .active {
+      background: #444;
+      color: #fff;
+    }
+
+    .detail-preview {
+      width: 112px;
+      aspect-ratio: 1;
+      margin: 17px auto;
+      display: grid;
+      place-items: center;
+      background: #444;
+    }
+
+    .detail-preview .shape {
+      width: 48%;
+      height: 48%;
+    }
+
+    .detail-table {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 5px 8px;
+      font-size: 11px;
+    }
+
+    .detail-table dt {
+      color: #b8b8b8;
+      font-weight: 650;
+    }
+
+    .detail-table dd {
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      color: #ddd;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .detail-actions {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .detail-actions span {
+      padding: 5px 2px;
+      border: 1px solid #222;
+      background: #4b4b4b;
+      color: #ddd;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .feature-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .feature {
+      min-height: 124px;
+      padding: 17px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #262626;
+    }
+
+    .feature-index {
+      width: 26px;
+      height: 26px;
+      margin-bottom: 11px;
+      display: grid;
+      place-items: center;
+      border-radius: 4px;
+      background: #345d86;
+      color: #edf6ff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+      gap: 28px;
+    }
+
+    .check-list,
+    .plain-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 18px;
+    }
+
+    .check-list li,
+    .plain-list li {
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 1px;
+      width: 9px;
+      height: 5px;
+      border-left: 2px solid var(--green);
+      border-bottom: 2px solid var(--green);
+      transform: rotate(-45deg);
+    }
+
+    .plain-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    .plain-list li::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 3px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .metric-preview {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #292929;
+    }
+
+    .metric-title {
+      padding: 8px 11px;
+      border-bottom: 1px solid var(--line);
+      background: #343434;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .metric {
+      padding: 13px;
+      border-right: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .metric:nth-child(even) {
+      border-right: 0;
+    }
+
+    .metric-label {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .metric-value {
+      display: block;
+      margin-top: 2px;
+      color: #f0f0f0;
+      font-size: 18px;
+      font-weight: 650;
+    }
+
+    .lod-row {
+      padding: 9px 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 12px;
+    }
+
+    .lod-row:last-child {
+      border-bottom: 0;
+    }
+
+    .lod-drop {
+      color: #9ac88f;
+    }
+
+    .query-flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      counter-reset: query-step;
+    }
+
+    .query-step {
+      position: relative;
+      min-height: 120px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #282828;
+      counter-increment: query-step;
+    }
+
+    .query-step::before {
+      content: counter(query-step);
+      width: 24px;
+      height: 24px;
+      margin-bottom: 12px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #376c9b;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .query-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 26px;
+      right: -11px;
+      z-index: 2;
+      width: 10px;
+      height: 2px;
+      background: var(--blue);
+    }
+
+    .query-step strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .query-step span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .query-actions {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .query-action {
+      min-height: 92px;
+      padding: 15px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #262626;
+    }
+
+    .query-action strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #dcecff;
+    }
+
+    .query-action span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .result-operations {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .result-operations span {
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #313131;
+      color: #cfcfcf;
+      font-size: 12px;
+    }
+
+    .safety-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .safety-block {
+      padding-left: 14px;
+      border-left: 3px solid var(--green);
+    }
+
+    .safety-block:nth-child(2) {
+      border-left-color: var(--blue);
+    }
+
+    .safety-block:nth-child(3) {
+      border-left-color: var(--orange);
+    }
+
+    .safety-block p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      padding: 24px 0 36px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #888;
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .intro-row,
+      .install-grid,
+      .two-column {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .read-only {
+        width: 100%;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .query-flow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .query-step:not(:last-child)::after {
+        display: none;
+      }
+
+      .unity-main {
+        grid-template-columns: minmax(0, 1fr) 5px minmax(230px, 0.72fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner {
+        width: min(calc(100% - 20px), var(--content));
+        flex-wrap: wrap;
+        gap: 0;
+        padding-top: 7px;
+      }
+
+      .brand {
+        min-height: 34px;
+      }
+
+      .top-actions {
+        margin-left: auto;
+      }
+
+      .nav {
+        width: 100%;
+        order: 3;
+      }
+
+      .nav a {
+        min-height: 38px;
+      }
+
+      .page {
+        width: min(calc(100% - 20px), var(--content));
+      }
+
+      .intro {
+        padding-top: 28px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .unity-main {
+        grid-template-columns: 1fr;
+      }
+
+      .splitter {
+        display: none;
+      }
+
+      .detail-pane {
+        border-top: 2px solid #202020;
+      }
+
+      .asset-grid {
+        grid-template-columns: repeat(3, minmax(72px, 1fr));
+      }
+
+      .feature-grid,
+      .query-actions,
+      .safety-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .query-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .check-list {
+        grid-template-columns: 1fr;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+
+    @media print {
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        background: #fff;
+        color: #222;
+      }
+
+      .topbar,
+      .top-actions {
+        display: none;
+      }
+
+      .page {
+        width: 100%;
+      }
+
+      section,
+      .intro {
+        break-inside: avoid;
+        border-color: #ddd;
+      }
+    }
+
+/* Current guide diagrams share the original Unity-style visual language. */
+.version { color: var(--muted); font-size: 13px; margin-left: auto; }
+.guide-nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 28px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.guide-nav a { padding: 7px 0; color: #9cc6f4; font-size: 14px; }
+.guide-nav a:hover { color: white; text-decoration: underline; }
+.guide-visual { margin: 0 0 24px; min-width: 0; }
+.guide-visual figcaption { margin-top: 8px; color: var(--muted); font-size: 12px; }
+.guide-steps { padding-left: 25px; columns: 2; column-gap: 42px; }
+.guide-steps li { padding: 0 0 12px 4px; break-inside: avoid; }
+.notes { border-left: 3px solid var(--teal); padding: 10px 16px; background: #252f2d; color: #bcd2cd; font-size: 13px; }
+.notes p { margin: 4px 0; }
+.walkthrough { padding: 26px; background: #292929; border: 1px solid var(--line); border-radius: 6px; }
+.journey { display: grid; grid-template-columns: 1fr 28px 1fr 28px 1fr; align-items: center; gap: 10px; }
+.journey > div { min-width: 0; padding: 12px 0; }
+.journey b { display: block; font-size: 24px; color: #7eb8ee; line-height: 1.3; margin-bottom: 8px; }
+.journey strong,.journey span { display: block; }
+.journey span { color: var(--muted); font-size: 12px; margin-top: 6px; overflow-wrap: anywhere; }
+.journey i,.drag-arrow { font-style: normal; color: #7eb8ee; text-align: center; font-size: 20px; }
+.journey.compact { margin-top: 20px; border-top: 1px solid var(--line); }
+.visual-note { border-top: 1px solid var(--line); padding: 16px 0 0; margin-top: 20px; font-size: 13px; color: #b8c8d6; }
+.mock-menu { background: #333; border: 1px solid var(--line); padding: 10px 16px; margin-top: 18px; }
+.mock-menu > span { display: inline-block; padding: 4px 14px; }
+.selected-label { background: #365e82; color: #edf6ff; }
+.menu-item { background: #454545; padding: 10px 14px; max-width: 450px; margin: 8px 0 0 65px; }
+.menu-item em { font-style: normal; color: #91c6f3; margin-left: 14px; }
+.demo-columns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 30px; align-items: start; }
+.demo-columns > div { min-width: 0; }
+.field { overflow-wrap: anywhere; }
+.hint-right { float: right; font-size: 12px; color: #9bc5ed; }
+.history-list { border: 1px solid #565656; margin-top: 6px; background: #353535; }
+.history-list > div { padding: 8px 12px; }
+.history-list small { float: right; color: #b5d6f5; }
+.muted { color: var(--muted); }
+.annotation { margin: 16px 0 0; color: #8fc2f0; font-size: 13px; }
+.mini-resource { min-height: 74px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--line); }
+.mini-resource .shape { width: 38px; height: 40px; flex-shrink: 0; }
+.mini-resource > span:last-child { margin-left: auto; font-size: 12px; }
+.gold { color: var(--gold); }
+.preview-modes { display: flex; flex-wrap: wrap; gap: 4px; padding: 10px; background: #333; border-bottom: 1px solid var(--line); }
+.preview-modes > span { padding: 5px 12px; border: 1px solid #575757; font-size: 13px; }
+.preview-comparison { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; padding: 20px; }
+.preview-comparison strong { display: block; margin: 12px 0 4px; font-size: 14px; }
+.preview-comparison p { font-size: 12px; color: var(--muted); margin: 0; }
+.model-stage { height: 220px; position: relative; display: grid; place-items: center; background: #424242; border-bottom: 2px solid #646464; overflow: hidden; }
+.grass-blades { width: 180px; height: 170px; position: relative; }
+.grass-blades i { display: block; position: absolute; width: 34px; height: 120px; bottom: 4px; left: 70px; background: #76a3a8; clip-path: polygon(0 100%,35% 10%,60% 0,100% 100%); transform-origin: 50% 100%; }
+.grass-blades i:nth-child(1) { transform: rotate(-42deg) scale(.72); background: #9bb9ba; }
+.grass-blades i:nth-child(2) { transform: rotate(-20deg); }
+.grass-blades i:nth-child(3) { transform: rotate(13deg) scale(1.1); background: #aec9c5; }
+.grass-blades i:nth-child(4) { transform: rotate(40deg) scale(.85); background: #688d99; }
+.grass-blades i:nth-child(5) { transform: rotate(60deg) scale(.6); }
+.grass-blades.faint { opacity: .08; transform: scaleY(.22); }
+.axis-label { position: absolute; bottom: 8px; right: 12px; font-size: 12px; color: #c9d8df; }
+.unity-window > .visual-note { margin: 0; padding: 14px 20px; }
+.relation { display: grid; grid-template-columns: 1fr 80px 1fr 80px 1fr; align-items: center; }
+.relation-node { padding: 20px 10px; border: 1px solid #555; text-align: center; min-width: 0; }
+.relation-node strong,.relation-node span { display: block; overflow-wrap: anywhere; }
+.relation-node span { color: var(--muted); margin-top: 8px; font-size: 12px; }
+.relation-node.focus { border-color: #6ba5e5; background: #2b4052; }
+.relation-arrow { color: #8fc2f0; text-align: center; font-size: 13px; }
+.drag-demo { display: grid; grid-template-columns: 160px 100px 1fr; gap: 24px; align-items: center; }
+.drag-source { text-align: center; border: 1px solid #777; background: #414141; padding: 12px; }
+.drag-source .thumb { height: 108px; }
+.drag-source strong,.drag-source > span { display: block; font-size: 13px; }
+.drag-source > span { color: var(--muted); }
+.scene-demo { min-height: 225px; background: #393f3d; border: 1px solid #59665e; padding: 16px; text-align: center; }
+.scene-label { display: block; color: #b3c7bc; font-size: 12px; text-align: left; }
+.scene-ground { height: 135px; display: grid; place-items: center; background: repeating-linear-gradient(0deg,transparent,transparent 25px,#46544c 26px),repeating-linear-gradient(90deg,transparent,transparent 25px,#46544c 26px); }
+.scene-demo strong { font-size: 13px; }
+.selected-assets > div { padding: 12px; background: #365e82; border: 1px solid #6898c3; margin-bottom: 5px; }
+.context-menu { background: #444; border: 1px solid #666; margin: 12px 0 0 24px; }
+.context-menu span,.context-menu strong { display: block; padding: 8px 12px; font-size: 13px; }
+.context-menu span { color: var(--muted); background: #333; }
+.context-menu strong { background: #365e82; }
+.folder-tree { padding: 16px; background: #222; border-left: 3px solid var(--gold); font-family: Consolas,'Microsoft YaHei',monospace; }
+.folder-tree strong,.folder-tree span { display: block; overflow-wrap: anywhere; padding: 5px 0; }
+.folder-tree strong { color: #d6c58c; font-weight: 400; }
+.folder-tree span { color: #bdc4cd; font-size: 13px; }
+.folder-tree p { color: #8fb9a1; font-size: 13px; margin: 14px 0 0; }
+.folder-tree .indent { padding-left: 20px; }
+.maintenance-demo { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; padding-top: 24px; border-top: 1px solid #555; margin-top: 20px; }
+.maintenance-demo strong,.maintenance-demo span,.maintenance-demo small { display: block; margin-bottom: 8px; }
+.maintenance-demo span { color: #b9c6d0; font-size: 13px; }
+.maintenance-demo small { color: var(--muted); }
+.uninstall-demo strong { color: #e4a6a6; }
+.data-explainer > div { border-bottom: 1px solid #555; padding: 14px 0; }
+.data-explainer strong,.data-explainer span { display: block; }
+.data-explainer span { color: var(--muted); font-size: 13px; margin-top: 4px; }
+.guide-visual * { min-width: 0; }
+@media(max-width:680px) {
+  .guide-nav,.demo-columns,.preview-comparison,.maintenance-demo { grid-template-columns: 1fr; }
+  .guide-steps { columns: 1; }
+  .walkthrough { padding: 16px; }
+  .journey { grid-template-columns: 1fr; gap: 0; }
+  .journey i { text-align: left; transform: rotate(90deg); width: 24px; }
+  .journey > div { padding: 10px 0; }
+  .journey b { display: inline-block; margin-right: 12px; font-size: 20px; }
+  .journey strong { display: inline; }
+  .relation { grid-template-columns: 1fr; gap: 8px; }
+  .relation-arrow { padding: 4px; }
+  .drag-demo { grid-template-columns: 1fr; gap: 14px; }
+  .drag-source { max-width: 180px; margin: auto; }
+  .drag-arrow { transform: rotate(90deg); width: 90px; margin: 10px auto; }
+  .toolbar-row { flex-wrap: wrap; }
+  .menu-item { margin-left: 0; }
+  .menu-item em { display: block; margin-left: 0; }
+}
+  
+</style></head><body>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="#top">美术资源管理器</a><span class="version">使用教程 · V0.7.7</span></div></header>
+<main class="page" id="top"><div class="intro"><p class="eyebrow">功能与操作图解</p><h1>美术资源管理器使用教程</h1><p class="lead">从资源浏览、筛选和收藏，到模型检查、引用查询、组合导出及更新维护。工具默认在本机使用，不会因为检查更新而上传项目美术资源。</p><div class="notice">请以实际安装版本为准。教程入口随包含该功能的版本提供；旧版没有入口时，可从GitHub首页阅读本教程。</div></div><nav class="guide-nav" aria-label="教程目录"><a href="#start">1. 安装与打开</a>
+<a href="#browse">2. 资源浏览与筛选</a>
+<a href="#history">3. 最近搜索与收藏</a>
+<a href="#preview">4. 放大预览与看不见的模型</a>
+<a href="#checks">5. 模型、LOD与资源检查</a>
+<a href="#references">6. 引用来源、资源依赖与场景内查</a>
+<a href="#drag">7. 拖入Unity场景</a>
+<a href="#export">8. 多选与组合打包导出</a>
+<a href="#maintenance">9. 更新、卸载与版本控制</a>
+<a href="#data">10. 本机数据与常见问题</a>
+</nav><article><section id="start"><div class="section-head"><h2>1. 安装与打开</h2></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="journey"><div><b>01</b><strong>下载 Windows 安装包</strong><span>ArtAssetBrowser-版本-installer.zip</span></div><i>→</i><div><b>02</b><strong>选择 Unity 项目</strong><span>核对安装预览 → 安装到项目</span></div><i>→</i><div><b>03</b><strong>在 Unity 中打开</strong><span>Art Tools → 美术资源管理器</span></div></div><div class="mock-menu"><span>Unity</span><span class="selected-label">Art Tools</span><span>Window</span><div class="menu-item">美术资源管理器 <em>← 从这里打开</em></div></div><div class="visual-note">首次安装使用 installer.zip；已经安装，直接在管理器内检查更新。</div></div>
+<figcaption>操作示意 · 非真实项目截图，示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
+<li>首次使用：从GitHub仓库首页下载标明Windows安装包的ZIP，解压后运行ArtAssetBrowserInstaller.exe。</li>
+<li>在安装管理器中选择Unity项目，核对预览后安装。默认程序目录为Assets/Editor/com.artasset.browser。</li>
+<li>进入Unity后，从Art Tools / 美术资源管理器打开工具。</li>
+<li>有使用教程按钮的版本，可直接从管理器打开本地HTML；首次打开会从工具内置内容生成，不需要联网。</li>
+</ol>
+<aside class="notes">
+<p>不要把GitHub自动生成的Source code压缩包当成安装包。</p>
+<p>已安装用户通常直接在管理器内更新，无需重复运行安装包。</p>
+</aside>
+</section>
+<section id="browse"><div class="section-head"><h2>2. 资源浏览与筛选</h2></div>
+<figure class="guide-visual"><div class="unity-window" aria-label="美术资源管理器界面示意">
+        <div class="unity-titlebar">
+          美术资源管理器
+          <span class="window-controls"><span></span><span></span><span></span></span>
+        </div>
+        <div class="unity-toolbar">
+          <div class="toolbar-row">
+            <span class="field grow">Assets/ArtAssets</span>
+            <span class="unity-button">选择文件夹</span>
+            <span class="unity-button">刷新</span>
+          </div>
+          <div class="toolbar-row">
+            <span class="field grow">搜索资源...</span>
+            <span class="unity-button active">预制体</span>
+            <span class="unity-button">模型</span>
+            <span class="unity-button">贴图</span>
+            <span class="unity-button">材质</span>
+            <span class="unity-button">场景</span>
+          </div>
+        </div>
+        <div class="unity-main">
+          <div class="asset-pane">
+            <div class="asset-grid">
+              <div class="asset-card selected">
+                <span class="type type-prefab">预制体</span>
+                <span class="star">★</span>
+                <div class="thumb"><span class="shape cube"></span></div>
+                <div class="name">Building_Group</div>
+              </div>
+              <div class="asset-card">
+                <span class="type type-model">模型</span>
+                <div class="thumb"><span class="shape model"></span></div>
+                <div class="name">Tree_A</div>
+              </div>
+              <div class="asset-card">
+                <span class="type type-texture">贴图</span>
+                <div class="thumb"><span class="shape texture"></span></div>
+                <div class="name">T_Grass_D</div>
+              </div>
+              <div class="asset-card">
+                <span class="type type-material">材质</span>
+                <div class="thumb"><span class="shape material"></span></div>
+                <div class="name">M_Grass</div>
+              </div>
+              <div class="asset-card">
+                <span class="type type-scene">场景</span>
+                <div class="thumb"><span class="shape scene"></span></div>
+                <div class="name">level_01</div>
+              </div>
+              <div class="asset-card">
+                <span class="type type-prefab">预制体</span>
+                <div class="thumb"><span class="shape cube"></span></div>
+                <div class="name">Rock_Group</div>
+              </div>
+              <div class="asset-card">
+                <span class="type type-model">模型</span>
+                <div class="thumb"><span class="shape model"></span></div>
+                <div class="name">Bridge_A</div>
+              </div>
+              <div class="asset-card">
+                <span class="type type-material">材质</span>
+                <div class="thumb"><span class="shape material"></span></div>
+                <div class="name">M_Stone</div>
+              </div>
+            </div>
+          </div>
+          <div class="splitter" title="拖动调整宽度"></div>
+          <div class="detail-pane">
+            <div class="detail-tabs">
+              <span class="active">资源详情</span>
+              <span>引用查询</span>
+            </div>
+            <div class="detail-preview"><span class="shape cube"></span></div>
+            <dl class="detail-table">
+              <dt>名称</dt><dd>Building_Group</dd>
+              <dt>类型</dt><dd>Prefab</dd>
+              <dt>路径</dt><dd>Assets/ArtAssets/Prefabs/Building_Group.prefab</dd>
+              <dt>GUID</dt><dd>8f0c...17ad</dd>
+            </dl>
+            <div class="detail-actions">
+              <span>定位</span>
+              <span>打开</span>
+              <span>资源器</span>
+              <span>更多</span>
+            </div>
+          </div>
+        </div>
+      </div>
+<figcaption>操作示意 · 非真实项目截图，示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
+<li>先选择Assets下要浏览的目录。全部、预制体、模型、贴图、材质、场景用于切换资源类型。</li>
+<li>左键点击类型按钮进行单选；右键用于组合选择多个类型。</li>
+<li>在搜索框输入资源名称或路径关键词；多个词以空格分开时，需要同时匹配。</li>
+<li>通过分类和子类缩小目录范围，中文显示用于辅助理解目录含义，不会重命名项目文件。</li>
+<li>用列表底部的尺寸滑块调整缩略图大小。定位用于在项目中找到资源，资源器用于打开文件所在位置。</li>
+</ol>
+<aside class="notes">
+<p>搜索只筛选已建立的资源列表。新增或变更资源未显示时，可点击刷新。</p>
+<p>重建资源列表与重建引用索引不是同一个操作。</p>
+</aside>
+</section>
+<section id="history"><div class="section-head"><h2>3. 最近搜索与收藏</h2></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="demo-columns"><div><div class="field">搜索：grass <span class="hint-right">▾ 最近搜索</span></div><div class="history-list"><div class="selected-label">grass <small>当前搜索</small></div><div>rock</div><div>building</div><div class="muted">清空搜索历史</div></div><p class="annotation">① 选历史关键词，重新筛选资源</p></div><div><div class="mini-resource"><span class="shape model"></span><strong>Grass_01</strong><span class="gold">★ 已收藏</span></div><div class="mini-resource"><span class="shape model"></span><strong>Grass_02</strong><span>☆</span></div><p class="annotation">② 收藏置顶，资源只显示一次</p><div class="field">★ 仅显示已收藏的资源</div></div></div></div>
+<figcaption>操作示意 · 非真实项目截图，示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
+<li>搜索后按Enter或离开搜索框，关键词会记录到历史菜单，最多保留最近10条。</li>
+<li>点击历史条目可以重新筛选；重复关键词会前移，空关键词不会记录。清空搜索历史只清除历史，不删除任何资源。</li>
+<li>点击资源卡片上的星号收藏或取消收藏。收藏资源在正常列表中置顶，但仍是同一个资源，不会复制资源文件。</li>
+<li>顶部星号筛选用于只看收藏资源。收藏不会让资源绕过当前目录、类型和搜索条件。</li>
+</ol>
+<aside class="notes">
+<p>搜索历史和收藏保存到本机数据目录。</p>
+<p>不要把收藏置顶理解为把资源复制到另一个文件夹。</p>
+</aside>
+</section>
+<section id="preview"><div class="section-head"><h2>4. 放大预览与看不见的模型</h2></div>
+<figure class="guide-visual"><div class="unity-window"><div class="unity-titlebar">独立模型预览 · Grass_01</div><div class="preview-modes"><span>材质</span><span class="selected-label">结构</span><span>线框</span><span>法线</span><span>☑ 双面</span><span>重置视角</span></div><div class="preview-comparison"><div><div class="model-stage"><div class="grass-blades faint"><i></i><i></i><i></i><i></i><i></i></div></div><strong>原材质不易辨认</strong><p>薄片、背面或 Shader 可能影响可见性</p></div><div><div class="model-stage"><div class="grass-blades"><i></i><i></i><i></i><i></i><i></i></div><span class="axis-label">Y ↑　X →</span></div><strong>结构模式 + 双面</strong><p>先辨认几何，再检查线框与法线</p></div></div><div class="visual-note">双击详情预览图或点放大图标打开；预览设置不修改原模型与材质。</div></div>
+<figcaption>操作示意 · 非真实项目截图，示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
+<li>选中资源后，在资源详情中双击预览图，或点击放大按钮，打开独立预览。</li>
+<li>模型预览提供材质、结构、线框、法线模式。材质用于查看原材质；结构用于辨认几何；线框用于检查三角形结构。</li>
+<li>法线模式显示世界空间顶点法线，不是法线贴图预览。</li>
+<li>很薄的草片、边界面或单面模型不明显时，可尝试结构模式、双面选项及重置视角。双面只影响临时预览，不会修改原材质。</li>
+<li>贴图也可单独放大查看。切换资源时预览会跟随选择，不必反复打开多个窗口。</li>
+</ol>
+<aside class="notes">
+<p>空预览不一定表示资源丢失，也可能与单面朝向、材质、自定义Shader、网格或视角有关。</p>
+<p>烘焙、导入、编译或游戏运行时，诊断预览可能暂停；某些设备不支持线框预览。</p>
+<p>预览不执行资源脚本或动画，不自动保存场景或修改导入设置。</p>
+</aside>
+</section>
+<section id="checks"><div class="section-head"><h2>5. 模型、LOD与资源检查</h2></div>
+<figure class="guide-visual"><div class="two-column">
+        <ul class="check-list">
+          <li>三角面数与顶点数</li>
+          <li>Mesh 数量</li>
+          <li>Renderer 数量</li>
+          <li>材质槽数量</li>
+          <li>是否包含 LODGroup</li>
+          <li>各级 LOD 面数</li>
+          <li>LOD 下降比例</li>
+          <li>检查提示</li>
+        </ul>
+
+        <div class="metric-preview">
+          <div class="metric-title">模型检查</div>
+          <div class="metrics">
+            <div class="metric"><span class="metric-label">Tris</span><span class="metric-value">18,642</span></div>
+            <div class="metric"><span class="metric-label">Verts</span><span class="metric-value">9,831</span></div>
+            <div class="metric"><span class="metric-label">Mesh</span><span class="metric-value">5</span></div>
+            <div class="metric"><span class="metric-label">材质槽</span><span class="metric-value">4</span></div>
+          </div>
+          <div class="lod-row"><span>LOD0 · 18,642 tris</span><span>基准</span></div>
+          <div class="lod-row"><span>LOD1 · 8,420 tris</span><span class="lod-drop">下降 54.8%</span></div>
+          <div class="lod-row"><span>LOD2 · 3,120 tris</span><span class="lod-drop">下降 62.9%</span></div>
+        </div>
+      </div><figcaption>操作示意 · 非真实项目截图，示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
+<li>在详情里查看三角面、顶点、Mesh、Renderer和材质槽等统计。</li>
+<li>展开LOD检查查看LODGroup相关信息。没有LODGroup表示未发现该组件，不等于模型无法使用。</li>
+<li>引用查询页中的资源检查可按当前资源或浏览目录运行检查，查看结果后再决定如何处理。</li>
+</ol>
+<aside class="notes">
+<p>检查结果用于辅助排查，不会自动修复、删除或重新命名你的资源。</p>
+</aside>
+</section>
+<section id="references"><div class="section-head"><h2>6. 引用来源、资源依赖与场景内查</h2></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="relation"><div class="relation-node"><strong>House.prefab</strong><span>谁引用当前模型</span></div><div class="relation-arrow">引用来源<br>←</div><div class="relation-node focus"><strong>House.fbx</strong><span>当前查询目标</span></div><div class="relation-arrow">资源依赖<br>→</div><div class="relation-node"><strong>材质 / 贴图</strong><span>当前模型依赖什么</span></div></div><div class="journey compact"><div><b>1</b><strong>确认扫描范围</strong></div><i>→</i><div><b>2</b><strong>建立 / 更新索引</strong></div><i>→</i><div><b>3</b><strong>查询并定位结果</strong></div></div><div class="visual-note">场景内查：只检查已打开并加载的场景。索引是快照，过期结果不能证明资源无人使用。</div></div>
+<figcaption>操作示意 · 非真实项目截图，示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
+<li>引用来源：查看哪些资源引用了当前资源，可用于判断它是否被Prefab、场景或其他资产使用。</li>
+<li>资源依赖：查看当前资源依赖哪些资产，例如预制体引用的模型、材质或贴图。</li>
+<li>场景内查：检查已经打开并加载的场景，不会自动打开所有场景。</li>
+<li>需要基于项目文件查询时，先确认扫描范围并建立引用索引。范围或资源变化后，按提示更新索引。</li>
+<li>索引结果不完整时再考虑深度扫描；扫描范围越大，耗时越长。</li>
+</ol>
+<aside class="notes">
+<p>引用索引是本机缓存快照，不是项目实时真相；未建索引或索引过期时不能据此断言资源无人使用。</p>
+</aside>
+</section>
+<section id="drag"><div class="section-head"><h2>7. 拖入Unity场景</h2></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="drag-demo"><div class="drag-source"><div class="thumb"><span class="shape cube"></span></div><strong>House.prefab</strong><span>资源卡片</span></div><div class="drag-arrow">按住拖动<br>→</div><div class="scene-demo"><span class="scene-label">Unity · Scene / Hierarchy</span><div class="scene-ground"><span class="shape cube"></span></div><strong>由 Unity 接收并放置</strong></div></div><div class="visual-note">模型、预制体拖入场景；材质拖给合适的对象。完成后自行保存场景。</div></div>
+<figcaption>操作示意 · 非真实项目截图，示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
+<li>从资源卡片拖动可支持的模型或预制体，放到Unity场景或Hierarchy中。</li>
+<li>材质球可拖放到适合接收材质的对象或位置；具体放置由Unity原生拖放处理。</li>
+<li>如果没有产生预期效果，先检查拖放目标、资源类型和Unity当前是否正在编译、导入或运行。</li>
+</ol>
+<aside class="notes">
+<p>工具不会自动替你保存场景。完成编辑后按自己的工作流程保存。</p>
+</aside>
+</section>
+<section id="export"><div class="section-head"><h2>8. 多选与组合打包导出</h2></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="demo-columns"><div><div class="selected-assets"><div>☑ House.prefab</div><div>☑ Tree.fbx</div></div><div class="context-menu"><span>右键菜单</span><strong>导出模型 / 贴图…</strong></div><p class="annotation">① 多选资源 → 右键导出</p><div class="field">☑ 包含关联贴图</div><p class="annotation">② 核对收集结果与文件夹名</p></div><div class="folder-tree"><strong>📁 场景素材包 /</strong><span>├ House.fbx</span><span>├ Tree.fbx</span><span>├ T_House_D.png</span><span>└ T_Tree_D.png</span><p>一个文件夹 · 保留原文件名</p></div></div><div class="visual-note">选择 Assets 之外的输出位置。不是完整 Unity 工程迁移；不包含材质球、Shader 和脚本。</div></div>
+<figcaption>操作示意 · 非真实项目截图，示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
+<li>在资源列表选择一个或多个要导出的资源，右键打开导出菜单。</li>
+<li>在导出窗口核对所选资源，并选择是否收集相关模型、贴图引用。选择预制体时，可以收集它实际用到的相关模型与贴图。</li>
+<li>选择输出位置并自定义打包文件夹名；同一批选择组合到一个输出文件夹，不保留冗长的原目录层级。</li>
+<li>确认预览后执行导出。模型与贴图原名保持不变；遇到重名或其他阻挡提示时先核对，不要强行覆盖。</li>
+</ol>
+<aside class="notes">
+<p>该功能用于快捷收集模型与贴图，不是完整Unity工程迁移。</p>
+<p>当前不把材质球、Shader及脚本作为完整项目打包导出，也不能承诺在其他软件中还原Unity材质效果。</p>
+</aside>
+</section>
+<section id="maintenance"><div class="section-head"><h2>9. 更新、卸载与版本控制</h2></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="journey"><div><b>1</b><strong>检查更新</strong><span>读取公开版本信息</span></div><i>→</i><div><b>2</b><strong>查看更新内容</strong><span>确认版本与操作预览</span></div><i>→</i><div><b>3</b><strong>下载并更新</strong><span>按提示完成，必要时正常关闭 Unity</span></div></div><div class="maintenance-demo"><div><strong>Git / UGit</strong><span>□ 允许随项目提交工具</span><small>独立检测 → 预览 → 确认</small></div><div><strong>SVN</strong><span>□ 允许随项目提交工具</span><small>独立检测 → 预览 → 确认</small></div><div class="uninstall-demo"><strong>卸载工具</strong><span>先看移除 / 保留列表</span><small>确认后执行，不直接删除项目资源</small></div></div></div>
+<figcaption>操作示意 · 非真实项目截图，示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
+<li>点击更新记录查看版本变化；点击检查更新获取公开版本信息，确认说明后再下载并更新。</li>
+<li>如提示等待Unity关闭，请先保存工作并正常关闭目标Unity，完成后重新打开项目。不要手动覆盖安装目录。</li>
+<li>卸载工具入口会先给出操作预览。核对将移除和保留的内容，再确认卸载。</li>
+<li>Git / UGit与SVN分别设置。先看预览和提示，确认后才应用支持的修改；以界面显示的真实检测状态为准。</li>
+</ol>
+<aside class="notes">
+<p>工具默认本机使用，不等于自动提交或上传到Git、UGit、SVN。已经被版本控制跟踪的文件不能靠忽略规则自动撤回。</p>
+<p>没有仓库、缺少客户端或无法验证时，不应把开关显示当成已经配置成功。</p>
+<p>检查更新仅读取公开发行信息，不上传你的美术资源。</p>
+</aside>
+</section>
+<section id="data"><div class="section-head"><h2>10. 本机数据与常见问题</h2></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="demo-columns"><div class="folder-tree"><strong>📁 Assets/Editor/com.artasset.browser /</strong><span>├ Editor /　程序文件</span><span>└ LocalData~ /　本机数据</span><span class="indent">├ 收藏 / 历史</span><span class="indent">├ 索引 / 预览缓存</span><span class="indent">└ Documentation /　离线教程</span></div><div class="data-explainer"><div><strong>程序</strong><span>随版本更新</span></div><div><strong>本机数据</strong><span>收藏、索引和缓存保留</span></div><div><strong>项目美术资源</strong><span>不因检查更新而上传</span></div></div></div><div class="visual-note">Library 是 Unity 项目缓存，不是本工具的安装包；排查问题不要直接删除整个 Library。</div></div>
+<figcaption>操作示意 · 非真实项目截图，示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
+<li>收藏、历史、索引、预览缓存等本机数据集中保存在安装目录下的LocalData~，与程序文件分开管理。</li>
+<li>如果预览异常，先确认资源和导入状态，再刷新或按工具提供的方式处理缓存；不要直接删除整个Unity项目Library。</li>
+<li>本地教程在LocalData~/Documentation下生成。更新到包含新教程内容的版本后，再次打开会使用随程序携带的新内容。</li>
+<li>反馈问题时提供工具版本、Unity版本、操作步骤及错误信息，不要上传凭据或未经授权的项目资源。</li>
+</ol>
+<aside class="notes">
+<p>缓存用于减少重复扫描和预览生成，不是资源文件的替代备份。</p>
+<p>当前已验证Windows x64、Unity2022.3.62f2c1；其他Unity版本、渲染管线或特殊项目设置仍需实际验证。</p>
+</aside>
+</section>
+</article><footer class="footer">本地 HTML 可离线阅读 · 内容版本 V0.7.7</footer></main></body></html>
