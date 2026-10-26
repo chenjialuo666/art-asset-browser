@@ -1210,7 +1210,7 @@
 }
   
 </style></head><body>
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="#top">美术资源管理器</a><span class="version">使用教程 · V0.7.7</span></div></header>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="#top">美术资源管理器</a><span class="version">使用教程 · V0.7.11</span></div></header>
 <main class="page" id="top"><div class="intro"><p class="eyebrow">功能与操作图解</p><h1>美术资源管理器使用教程</h1><p class="lead">按实际工作流程查找功能：浏览素材、检查模型与贴图、追踪引用、组合导出，以及安装和更新。每个主题都配有操作图解。</p><div class="notice">安装包、管理器内入口与在线教程使用同一份内容。图中资源为教学示例，按钮位置以你安装的版本为准。</div></div><nav class="guide-nav" aria-label="教程目录"><a href="#start">1. 安装与打开</a>
 <a href="#browse">2. 浏览、筛选与选择资源</a>
 <a href="#categories">3. 目录分类与中文名称</a>
@@ -1227,12 +1227,12 @@
 <a href="#sharing">14. Git / UGit 与 SVN 独立设置</a>
 <a href="#data">15. 缩略图模式、缓存与本机数据</a>
 </nav><article><section id="start"><div class="section-head"><h2>1. 安装与打开</h2></div>
-<figure class="guide-visual"><div class="walkthrough"><div class="journey"><div><b>01</b><strong>下载 Windows 安装包</strong><span>ArtAssetBrowser-版本-installer.zip</span></div><i>→</i><div><b>02</b><strong>选择 Unity 项目</strong><span>核对安装预览 → 安装到项目</span></div><i>→</i><div><b>03</b><strong>在 Unity 中打开</strong><span>Art Tools → 美术资源管理器</span></div></div><div class="mock-menu"><span>Unity</span><span class="selected-label">Art Tools</span><span>Window</span><div class="menu-item">美术资源管理器 <em>← 从这里打开</em></div></div><div class="visual-note">首次安装使用 installer.zip；已经安装，直接在管理器内检查更新。</div></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="journey"><div><b>01</b><strong>下载 Windows 安装包</strong><span>ArtAssetBrowser-版本-installer.zip</span></div><i>→</i><div><b>02</b><strong>选择 Unity 项目</strong><span>核对安装预览 → 安装到项目</span></div><i>→</i><div><b>03</b><strong>在 Unity 中打开</strong><span>美术资源管理器 → 打开管理器</span></div></div><div class="mock-menu"><span>Unity</span><span class="selected-label">美术资源管理器</span><span>Window</span><div class="menu-item">打开管理器 <em>← 从这里打开</em></div></div><div class="visual-note">首次安装使用 installer.zip；已经安装，直接在管理器内检查更新。</div></div>
 <figcaption>教学图解 · 非真实项目截图；示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
 <li>首次使用：下载仓库首页的 Windows 安装包，完整解压，运行 ArtAssetBrowserInstaller.exe。不要只取出 EXE，其他随附文件也请保留。</li>
 <li>选择需要使用工具的 Unity 项目根目录，也就是包含 Assets、Packages 和 ProjectSettings 的那一层。</li>
 <li>核对安装预览，点击安装到项目。默认安装在 Assets/Editor/com.artasset.browser；已有 Editor 目录会复用，没有时自动建立。</li>
-<li>回到 Unity 等待导入完成，从 Art Tools / 美术资源管理器打开。安装包内的使用教程.html、管理器中的使用教程和 GitHub 在线教程内容一致。</li>
+<li>回到 Unity 等待导入完成，从 美术资源管理器 / 打开管理器打开。安装包内的使用教程.html、管理器中的使用教程和 GitHub 在线教程内容一致。</li>
 </ol>
 <aside class="notes">
 <p>日常使用不必反复打开安装器，更新与卸载均可从管理器操作。</p>
@@ -1356,8 +1356,8 @@
 <section id="history"><div class="section-head"><h2>4. 最近搜索与收藏</h2></div>
 <figure class="guide-visual"><div class="walkthrough"><div class="demo-columns"><div><div class="field">搜索：grass <span class="hint-right">▾ 最近搜索</span></div><div class="history-list"><div class="selected-label">grass <small>当前搜索</small></div><div>rock</div><div>building</div><div class="muted">清空搜索历史</div></div><p class="annotation">① 选历史关键词，重新筛选资源</p></div><div><div class="mini-resource"><span class="shape model"></span><strong>Grass_01</strong><span class="gold">★ 已收藏</span></div><div class="mini-resource"><span class="shape model"></span><strong>Grass_02</strong><span>☆</span></div><p class="annotation">② 收藏置顶，资源只显示一次</p><div class="field">★ 仅显示已收藏的资源</div></div></div></div>
 <figcaption>教学图解 · 非真实项目截图；示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
-<li>搜索后按 Enter 或离开搜索框，关键词进入历史菜单，最多保留最近 10 条。重复搜索会前移，空内容不记录。</li>
-<li>点击历史条目重新筛选；清空搜索框与清空搜索历史是两个独立操作，均不会删除资源。</li>
+<li>点击搜索框展开最近搜索，输入时匹配历史关键词。按 Enter 确认或点击历史条目后才记录，最多保留最近 10 条；仅离开输入框或关闭窗口不会记录草稿。</li>
+<li>点击历史条目立即筛选并移到最前；上下键选择、Enter 使用、Esc 收起。每条右侧 &#215; 可删除单条，底部清空需要确认；清空历史保留当前搜索文字，均不会删除资源。</li>
 <li>点击资源星号收藏或取消收藏。收藏资源在当前结果内置顶，仍只显示一次，也不移动文件。</li>
 <li>顶部星号开关只显示已收藏的资源；再次关闭可回到全部匹配结果。</li>
 </ol>
@@ -1429,7 +1429,7 @@
 <section id="references"><div class="section-head"><h2>8. 引用来源、资源依赖与场景内查</h2></div>
 <figure class="guide-visual"><div class="walkthrough"><div class="mock-panel-title">一条真实含义的引用链：场景使用预制体，预制体需要模型与材质</div><div class="relation"><div class="relation-node"><strong>Town.unity</strong><span>引用来源：谁用了它</span></div><div class="relation-arrow">引用了<br>→</div><div class="relation-node focus"><strong>House.prefab</strong><span>当前查询目标</span></div><div class="relation-arrow">依赖于<br>→</div><div class="relation-node"><strong>House.fbx<br>M_House.mat</strong><span>资源依赖：它用了谁</span></div></div><div class="journey compact"><div><b>1</b><strong>确定范围，建索引</strong></div><i>→</i><div><b>2</b><strong>选查询类型</strong><span>引用来源 / 资源依赖 / 场景内查</span></div><i>→</i><div><b>3</b><strong>核对结果</strong><span>搜索、详细显示、定位或导出报告</span></div></div><div class="visual-note">资源依赖勾选递归时可继续找到材质使用的贴图；场景内查只检查已打开并加载的场景。</div></div>
 <figcaption>教学图解 · 非真实项目截图；示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
-<li>在引用查询页选定查询目标。使用当前可采用 Unity 当前选择；从 Project 右键 Art Tools / 在美术资源管理器中查看引用，也可直接带入资源。</li>
+<li>在引用查询页选定查询目标。使用当前可采用 Unity 当前选择；从 Project 右键 美术资源管理器 / 查看引用，也可直接带入资源。</li>
 <li>确认扫描目录并建立索引。引用来源查谁引用它，资源依赖查它需要谁；递归依赖可继续查下一层依赖。</li>
 <li>场景内查仅检查已打开并加载的场景；结果可选中场景对象、查看层级或复制层级路径。</li>
 <li>查询结果支持搜索和简洁 / 详细显示；可定位、打开、查看文件位置或复制路径。导出按钮输出当前查询结果的文本报告。</li>
@@ -1454,7 +1454,7 @@
 </aside>
 </section>
 <section id="shader"><div class="section-head"><h2>10. Shader 使用查询</h2></div>
-<figure class="guide-visual"><div class="walkthrough"><div class="journey"><div><b>1</b><strong>Project 选 Shader</strong><span>Example.shader</span></div><i>→</i><div><b>2</b><strong>带入查询目标</strong><span>右键 Art Tools → 查看引用</span></div><i>→</i><div><b>3</b><strong>点击 Shader 使用</strong><span>先确认引用索引有效</span></div></div><div class="shader-flow"><div class="relation-node focus"><strong>Example.shader</strong><span>当前查询的 Shader</span></div><div class="relation-arrow">查到使用它的材质 →</div><div class="folder-tree"><span>M_House.mat</span><span>M_Roof.mat</span><span>M_Props.mat</span></div></div><div class="visual-note">搜索、分页、定位与导出帮助核对结果；这个按钮只读已有索引，不替代重建索引。</div></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="journey"><div><b>1</b><strong>Project 选 Shader</strong><span>Example.shader</span></div><i>→</i><div><b>2</b><strong>带入查询目标</strong><span>右键 美术资源管理器 → 查看引用</span></div><i>→</i><div><b>3</b><strong>点击 Shader 使用</strong><span>先确认引用索引有效</span></div></div><div class="shader-flow"><div class="relation-node focus"><strong>Example.shader</strong><span>当前查询的 Shader</span></div><div class="relation-arrow">查到使用它的材质 →</div><div class="folder-tree"><span>M_House.mat</span><span>M_Roof.mat</span><span>M_Props.mat</span></div></div><div class="visual-note">搜索、分页、定位与导出帮助核对结果；这个按钮只读已有索引，不替代重建索引。</div></div>
 <figcaption>教学图解 · 非真实项目截图；示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
 <li>先在 Unity Project 选择一个 Shader，再带入引用查询目标。当前浏览类型列表不单独列出 Shader，可使用 Project 右键入口或查询目标栏。</li>
 <li>确认索引范围和状态，点击 Shader 使用，读取已有索引中的使用关系。</li>
@@ -1526,4 +1526,4 @@
 <p>缓存用于减少重复扫描和预览生成，不能替代美术资源备份。</p>
 </aside>
 </section>
-</article><footer class="footer">本地 HTML 可离线阅读 · 内容版本 V0.7.7</footer></main></body></html>
+</article><footer class="footer">本地 HTML 可离线阅读 · 内容版本 V0.7.11</footer></main></body></html>

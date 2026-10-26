@@ -4,7 +4,7 @@ Unity编辑器本地资源浏览工具。本仓库仅提供发行文件和下载
 
 ## 下载
 
-### [点击下载 Windows 安装包（V0.7.10，59.1 MB）](https://github.com/chenjialuo666/art-asset-browser/releases/download/v0.7.10/ArtAssetBrowser-0.7.10-installer.zip)
+### [点击下载 Windows 安装包（V0.7.11，59.1 MB）](https://github.com/chenjialuo666/art-asset-browser/releases/download/v0.7.11/ArtAssetBrowser-0.7.11-installer.zip)
 
 **首次使用：下载上面这一个 ZIP 即可。** 解压后运行 `ArtAssetBrowserInstaller.exe`，选择你的Unity项目进行安装。
 
@@ -19,7 +19,7 @@ Unity编辑器本地资源浏览工具。本仓库仅提供发行文件和下载
 1. 下载上方安装包并解压，运行 `ArtAssetBrowserInstaller.exe`。
 2. 在安装管理器中选择需要使用工具的Unity项目。
 3. 默认安装位置为项目内 `Assets/Editor/com.artasset.browser`。
-4. 在Unity菜单中打开 `Art Tools / 美术资源管理器`。
+4. 在Unity菜单中打开 `美术资源管理器 / 打开管理器`。
 5. 后续更新和卸载均可在管理器内操作。
 
 如更新提示等待Unity关闭，请先保存工作并正常关闭Unity，完成后重新打开项目。不要手动覆盖更新文件。
