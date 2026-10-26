@@ -4,9 +4,9 @@ Unity编辑器本地资源浏览工具。本仓库仅提供发行文件和下载
 
 ## 下载
 
-### [点击下载 Windows 安装包（基础版 V0.7.10，59.1 MB）](https://github.com/chenjialuo666/art-asset-browser/releases/download/v0.7.10/ArtAssetBrowser-0.7.10-installer.zip)
+### [点击下载 Windows 安装包（V0.7.12，59.1 MB）](https://github.com/chenjialuo666/art-asset-browser/releases/download/v0.7.12/ArtAssetBrowser-0.7.12-installer.zip)
 
-**首次使用：下载上面这一个 ZIP 即可。** 解压后运行 `ArtAssetBrowserInstaller.exe`，选择你的Unity项目进行安装，再在管理器中检查更新到最新 V0.7.11。
+**首次使用：下载上面这一个 ZIP 即可。** 完整解压后运行 `ArtAssetBrowserInstaller.exe`，选择你的Unity项目，直接安装最新 V0.7.12。
 
 **已经安装：打开美术资源管理器，点击“检查更新 → 下载并更新”。无需重新下载安装包。**
 
@@ -19,8 +19,8 @@ Unity编辑器本地资源浏览工具。本仓库仅提供发行文件和下载
 1. 下载上方安装包并解压，运行 `ArtAssetBrowserInstaller.exe`。
 2. 在安装管理器中选择需要使用工具的Unity项目。
 3. 默认安装位置为项目内 `Assets/Editor/com.artasset.browser`。
-4. 基础安装版从 `Art Tools / 美术资源管理器` 打开，点击“检查更新”升级到最新版本。
-5. V0.7.11 起入口为 `美术资源管理器 / 打开管理器`。后续更新和卸载均可在管理器内操作。
+4. 在 Unity 菜单中打开 `美术资源管理器 / 打开管理器`。
+5. 后续更新和卸载均可在管理器内操作。旧版还在 Art Tools 菜单时，先打开旧版管理器检查更新。
 
 如更新提示等待Unity关闭，请先保存工作并正常关闭Unity，完成后重新打开项目。不要手动覆盖更新文件。
 

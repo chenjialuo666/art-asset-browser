@@ -1210,7 +1210,7 @@
 }
   
 </style></head><body>
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="#top">美术资源管理器</a><span class="version">使用教程 · V0.7.11</span></div></header>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="#top">美术资源管理器</a><span class="version">使用教程 · V0.7.12</span></div></header>
 <main class="page" id="top"><div class="intro"><p class="eyebrow">功能与操作图解</p><h1>美术资源管理器使用教程</h1><p class="lead">按实际工作流程查找功能：浏览素材、检查模型与贴图、追踪引用、组合导出，以及安装和更新。每个主题都配有操作图解。</p><div class="notice">安装包、管理器内入口与在线教程使用同一份内容。图中资源为教学示例，按钮位置以你安装的版本为准。</div></div><nav class="guide-nav" aria-label="教程目录"><a href="#start">1. 安装与打开</a>
 <a href="#browse">2. 浏览、筛选与选择资源</a>
 <a href="#categories">3. 目录分类与中文名称</a>
@@ -1476,12 +1476,12 @@
 </aside>
 </section>
 <section id="export"><div class="section-head"><h2>12. 多选组合导出模型与贴图</h2></div>
-<figure class="guide-visual"><div class="walkthrough"><div class="demo-columns"><div><div class="selected-assets"><div>☑ House.prefab</div><div>☑ Tree.fbx</div></div><div class="context-menu"><span>右键菜单</span><strong>导出模型 / 贴图…</strong></div><p class="annotation">① 多选资源 → 右键导出</p><div class="field">☑ 包含关联贴图</div><p class="annotation">② 核对收集结果与文件夹名</p></div><div class="folder-tree"><strong>📁 场景素材包 /</strong><span>├ House.fbx</span><span>├ Tree.fbx</span><span>├ T_House_D.png</span><span>└ T_Tree_D.png</span><p>一个文件夹 · 保留原文件名</p></div></div><div class="visual-note">选择 Assets 之外的输出位置。不是完整 Unity 工程迁移；不包含材质球、Shader 和脚本。</div></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="demo-columns"><div><div class="selected-assets"><div>☑ House.prefab</div><div>☑ Tree.fbx</div></div><div class="context-menu"><span>右键菜单</span><strong>导出模型 / 贴图…</strong></div><p class="annotation">① 多选资源 → 分析导出文件</p><div class="field">搜索文件：House</div><div class="field">全部 · 模型 · 贴图</div><div class="selected-assets"><div>☑ House.fbx</div><div>☑ T_House_D.png</div><div>□ T_House_N.png</div></div><p class="annotation">② 按需勾选；搜索只改变显示范围</p></div><div class="folder-tree"><strong>📁 场景素材包 /</strong><span>├ House.fbx</span><span>├ Tree.fbx</span><span>├ T_House_D.png</span><span>└ T_Tree_D.png</span><p>只导出已勾选文件 · 保留原文件名</p></div></div><div class="visual-note">重新分析保留勾选，新增文件默认不勾选。选择 Assets 之外的输出位置；不包含材质球、Shader 和脚本。</div></div>
 <figcaption>教学图解 · 非真实项目截图；示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
 <li>Ctrl+左键追加选择，Shift+左键连续选择，再在已选资源上右键，选择导出模型与贴图。支持预制体、模型和贴图。</li>
-<li>在导出窗口核对资源，选择是否包含关联贴图，然后点击分析导出文件；修改选择或选项后重新分析。预制体会用于收集相关模型和所需贴图。</li>
+<li>选择是否包含关联贴图，点击分析导出文件。按文件名搜索，或切换全部、模型、贴图；逐项勾选需要的文件，全选结果和取消结果只影响当前显示的文件。搜索隐藏的已勾选文件仍会导出。</li>
 <li>选择 Assets 之外的输出位置，自定义打包文件夹名。多个选择组合到同一个文件夹，不保留冗长层级，保留模型与贴图原名。</li>
-<li>核对文件列表、数量与阻挡提示后导出；完成后点击打开导出文件夹。遇到同名文件或目标文件夹已存在时，换一个新文件夹名，不强行覆盖。</li>
+<li>核对已勾选数量与同名提示后导出。重新分析会保留原勾选；新增依赖默认不勾选，导出前清单变化会暂停，核对后再次导出。只有勾选文件之间的同名冲突会阻挡导出，目标文件夹已存在时不会覆盖。</li>
 </ol>
 <aside class="notes">
 <p>导出只收集模型与贴图，不输出预制体本身，也不是完整 Unity 工程迁移。</p>
@@ -1502,15 +1502,16 @@
 </aside>
 </section>
 <section id="sharing"><div class="section-head"><h2>14. Git / UGit 与 SVN 独立设置</h2></div>
-<figure class="guide-visual"><div class="walkthrough"><div class="demo-columns"><div class="sharing-track"><h3>Git / UGit</h3><div class="field">□ 允许随项目提交工具</div><div>检测当前项目状态</div><span>↓</span><div>预览 Git 相关变更</div><span>↓</span><div class="selected-label">确认后应用 / 按建议手动设置</div></div><div class="sharing-track"><h3>SVN</h3><div class="field">□ 允许随项目提交工具</div><div>检测工作副本与客户端</div><span>↓</span><div>预览 SVN 相关变更</div><span>↓</span><div class="selected-label">单独确认 / 按建议手动设置</div></div></div><div class="visual-note">两个开关分别预览、分别确认。无法验证不是已成功；工具不会代你提交或上传。</div></div>
+<figure class="guide-visual"><div class="walkthrough"><div class="demo-columns"><div class="sharing-track"><h3>Git / UGit</h3><div class="field">未检查 → 手动点击重新检查</div><div class="field">□ 允许随项目提交工具</div><span>↓</span><div>预览 Git 相关变更</div><span>↓</span><div class="selected-label">确认后应用 / 按建议手动设置</div></div><div class="sharing-track"><h3>SVN</h3><div class="field">未检查 → 手动点击重新检查</div><div class="field">□ 允许随项目提交工具</div><span>↓</span><div>预览 SVN 相关变更</div><span>↓</span><div class="selected-label">单独确认 / 按建议手动设置</div></div></div><div class="visual-note">切换窗口不自动扫描，平时显示上次结果。两个开关分别预览和确认；工具新版本提示不受影响。</div></div>
 <figcaption>教学图解 · 非真实项目截图；示例资源与数值仅用于说明</figcaption></figure><ol class="guide-steps">
-<li>主界面直接显示 Git / UGit 和 SVN 状态；设置窗口可查看详细说明和重新检查。</li>
+<li>主界面显示 Git / UGit 和 SVN 上次检查结果；首次显示未检查，点击右侧刷新图标或设置中的重新检查才获取状态，切换窗口与关闭设置不会触发扫描。</li>
 <li>两个允许随项目提交工具开关分别处理，默认按本机使用管理工具及其相关文件，不会替你提交或上传。</li>
-<li>切换前先阅读变更预览与提示，确认后才应用。遇到需要手动设置的情况，按建议完成后重新检查。</li>
+<li>切换前先阅读变更预览与提示，确认后才应用。执行设置仍会核对当前状态；需要手动设置时，按建议完成后重新检查。</li>
 <li>已经被版本控制跟踪的文件不能靠忽略规则自动撤回；没有仓库、缺少客户端或无法验证时，不应把开关当成已设置成功。</li>
 </ol>
 <aside class="notes">
 <p>Git / UGit 与 SVN 互不代替，也不共享一个确认结果。SVN 属性变更可能随项目提交，请核对预览。</p>
+<p>这里的手动检查不影响工具新版本的自动提示。</p>
 </aside>
 </section>
 <section id="data"><div class="section-head"><h2>15. 缩略图模式、缓存与本机数据</h2></div>
@@ -1526,4 +1527,4 @@
 <p>缓存用于减少重复扫描和预览生成，不能替代美术资源备份。</p>
 </aside>
 </section>
-</article><footer class="footer">本地 HTML 可离线阅读 · 内容版本 V0.7.11</footer></main></body></html>
+</article><footer class="footer">本地 HTML 可离线阅读 · 内容版本 V0.7.12</footer></main></body></html>
