@@ -4,7 +4,7 @@ Unity 编辑器本地资源浏览工具。本仓库提供发行文件和下载�
 
 ## 下载
 
-### [点击下载 Windows 安装包（V0.7.18，约 59 MB）](https://github.com/chenjialuo666/art-asset-browser/releases/download/v0.7.18/ArtAssetBrowser-0.7.18-installer.zip)
+### [点击下载 Windows 安装包（V0.7.19，约 59 MB）](https://github.com/chenjialuo666/art-asset-browser/releases/download/v0.7.19/ArtAssetBrowser-0.7.19-installer.zip)
 
 **首次使用：下载上面这一个 ZIP 即可。** 完整解压后运行 `ArtAssetBrowserInstaller.exe`，选择 Unity 项目。不要单独复制 EXE，随包文件需要保留。
 
