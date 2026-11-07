@@ -4,7 +4,7 @@ Unity 编辑器本地资源浏览工具。本仓库提供发行文件和下载�
 
 ## 下载
 
-### [点击下载 Windows 安装包（V0.7.24，约 59 MB）](https://github.com/chenjialuo666/art-asset-browser/releases/download/v0.7.24/ArtAssetBrowser-0.7.24-installer.zip)
+### [点击下载 Windows 安装包（V0.8.5，约 59 MB）](https://github.com/chenjialuo666/art-asset-browser/releases/download/v0.8.5/ArtAssetBrowser-0.8.5-installer.zip)
 
 **首次使用：下载上面这一个 ZIP 即可。** 完整解压后运行 `ArtAssetBrowserInstaller.exe`，选择 Unity 项目。不要单独复制 EXE，随包文件需要保留。
 
@@ -15,6 +15,8 @@ Unity 编辑器本地资源浏览工具。本仓库提供发行文件和下载�
 更新包、维护组件包、`update.json` 和 GitHub 自动生成的“Source code”压缩包，都不是普通用户需要单独下载的文件。
 
 ## 安装和使用
+
+V0.8.5 新增场景美术工作台、项目检查预设、检查结果对比、重复贴图排查、场景模型清单和贴图通道预览，并包含配套组与扩展模型预览。真实关卡完整工作流尚待验收，建议先在测试项目使用。
 
 1. 下载上方安装包并完整解压，运行 `ArtAssetBrowserInstaller.exe`。
 2. 选择需要使用工具的 Unity 项目，默认安装到 `Assets/Editor/com.artasset.browser`。
